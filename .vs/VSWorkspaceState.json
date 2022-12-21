@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\clip",
+    "\\configs",
+    "\\configs\\trainers",
+    "\\configs\\trainers\\MVLPT",
+    "\\scripts",
+    "\\scripts\\mvlpt",
+    "\\trainers"
+  ],
+  "SelectedNode": "\\configs\\trainers\\MVLPT\\vit_b16_ep100_ctxv1.yaml",
+  "PreviewInSolutionExplorer": false
+}

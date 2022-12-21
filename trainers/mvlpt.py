@@ -627,7 +627,6 @@ class MVLPTCOOPDataManager(DataManager):
         if cfg.VERBOSE:
             self.show_dataset_summary(cfg)
 
-
 from trainers.vision_benchmark.datasets import class_map_metric, get_metric
 import random
 class MVLPTDataManager(DataManager):
@@ -842,6 +841,45 @@ class MVLPT(TrainerX):
             self.update_lr()
 
         return loss_summary
+
+    #def forward_backward(self, batch):
+    #    image, label = self.parse_batch_train(batch)
+
+    #    model = self.model
+    #    optim = self.optim
+    #    scaler = self.scaler
+
+    #    # HACK: for multi-label classification, either works
+    #    if len(label.shape) > 1 and label.shape[-1] > 1:
+    #        label = label.float()
+    #        label /= label.sum(dim=-1, keepdim=True)
+
+    #    prec = self.cfg.TRAINER.UPLTrainer.PREC
+    #    if prec == "amp":
+    #        with autocast():
+    #            loss = model(image, label)
+    #        optim.zero_grad()
+    #        scaler.scale(loss).backward()
+    #        scaler.step(optim)
+    #        scaler.update()
+    #    else:
+    #        loss = model(image, label)
+    #        optim.zero_grad()
+    #        loss.backward()
+    #        optim.step()
+
+        
+    #    # HACK: During training, we hack the eval of multi-label by selecting only one class
+    #    if len(label.shape) > 1 and label.shape[-1] > 1:
+    #        label = torch.argmax(label, dim=1)
+
+    #    loss_summary = {"loss": loss.item()}
+
+
+    #    if (self.batch_idx + 1) == self.num_batches:
+    #        self.update_lr()
+
+    #    return loss_summary
 
     def parse_batch_train(self, batch):
         if self.cfg.DATASET.COOP:
